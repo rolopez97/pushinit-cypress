@@ -5,22 +5,23 @@ describe("To do list", () => {
         cy.url().should("eq", "https://pushing-it.vercel.app/home")
     })
 
-    it("Should open the To do list after login", () => {
+    it("opens the to do list after login", () => {
         cy.get("#todolistlink").click()
         cy.url().should("eq", "https://pushing-it.vercel.app/home/todolist")
     })
 
-    it("Adds a to do item", () => {
+    it("adds a to do item", () => {
         cy.get('[data-cy="todolistlink"]').click()
         cy.get("#task").type("First to do item")
+        cy.get("#sendTask").click()                
+
     })
 
-    it("Delets a to do item", () => {
+    it("deletes a to do item", () => {
         cy.get('[data-cy="todolistlink"]').click()
-        cy.get("#task").type("First to do item")        
-        cy.contains('button', 'Delete')   
+        cy.get("#task").type("First to do item")
+        cy.get("#sendTask").click()                
+        cy.contains('button', 'Delete').click()
 
     })
-
-    
 })
