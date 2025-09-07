@@ -14,14 +14,21 @@ describe("To do list", () => {
         cy.get('[data-cy="todolistlink"]').click()
         cy.get("#task").type("First to do item")
         cy.get("#sendTask").click()                
+        cy.contains("First to do item").should("exist")
 
+    })
+
+    it("checks completed tasks", () =>{
+        cy.get('[data-cy="todolistlink"]').click()
+        cy.contains("First to do item").click()
+        cy.get("#completed").click()
+        cy.contains("First to do item").should("exist")
     })
 
     it("deletes a to do item", () => {
         cy.get('[data-cy="todolistlink"]').click()
-        cy.get("#task").type("First to do item")
-        cy.get("#sendTask").click()                
         cy.contains('button', 'Delete').click()
+        cy.contains("First to do item").should("not.exist");
 
     })
 })
