@@ -8,8 +8,8 @@ describe("Form Utils", () => {
     it("displays the form and selects the date correctly", () => {
         cy.get('#formutilslink').click()
         cy.get('#showDatePicker').click()
-        cy.get('#datePicker').click()
-        cy.get('[aria-label="Choose Thursday, August 28th, 2025"]').click()
+        cy.get('#datePicker').clear()
+        cy.get('#datePicker').type("2025-09-11")
 
     })
 })
